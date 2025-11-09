@@ -785,3 +785,17 @@ body.lock-scroll {
   bottom: -6%;
   right: -2%;
 }
+
+/* ----- RESPONSIVE ----- */
+
+@media screen and (max-width: 500px) {
+  .portfolio-page .pp-cards {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+      "c1 c2"
+      "c3 c4"
+      "c5 c6"
+      "c7 c8";
+  }
+}
