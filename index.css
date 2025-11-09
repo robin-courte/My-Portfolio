@@ -1,0 +1,787 @@
+.anton-regular {
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Brittany";
+  src: url(./Fonts/Brittany/brittany_signature/BrittanySignatureScript.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 1rem;
+  font-family: "Kanit", Tahoma, Geneva, Verdana, sans-serif;
+  /* outline: 1px solid red; */
+}
+
+li {
+  list-style: none;
+}
+
+body {
+  height: 100vh;
+  background-color: #eee9df;
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  /* overflow-y: hidden; */
+  overflow-x: hidden;
+}
+
+/* -------------------- HEADER -------------------- */
+
+header {
+  width: 100vw;
+  position: relative;
+}
+
+/* ----- NAVBAR ----- */
+
+.navbar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  display: block;
+  height: 10vh;
+  margin-top: 3vh;
+  background-color: #eee9df;
+}
+
+.navbar.open {
+  display: none;
+}
+
+.navbar .links {
+  width: 100%;
+  display: flex;
+  gap: 2rem;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5% 20% 1.5% 20%;
+  z-index: 20;
+}
+
+.navbar .links a {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  font-size: 1.8rem;
+  transition: 0.3s;
+  z-index: 20;
+  font-family: "Anton";
+}
+
+.navbar .links .divider {
+  height: 3px;
+  background-color: black;
+  width: 0;
+  border-radius: 3px;
+  transition: 0.3s;
+}
+
+.navbar .links a:hover + .divider {
+  width: 100%;
+}
+
+/* -------------------- MAIN -------------------- */
+
+/* ----- HOME ----- */
+
+.home-page {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  background-color: #eee9df;
+}
+
+.home-page.open {
+  display: none;
+}
+
+.home-page .hp-image {
+  width: 25%;
+  height: 65%;
+  position: relative;
+  left: 19%;
+  top: 12%;
+  z-index: 5;
+}
+
+.home-page .hp-image .hpi-principal {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border-radius: 19%;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  box-shadow: -4px 5px 8px 0px rgb(85, 84, 84);
+}
+
+.home-page .hp-image .hpi-principal img {
+  width: 95%;
+  height: 98.5%;
+}
+
+.home-page .hp-text {
+  width: 70%;
+  height: 70%;
+  position: absolute;
+  right: 10%;
+  top: 10%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-end;
+  z-index: 2;
+}
+.home-page .hp-text span:nth-child(1) {
+  z-index: 10;
+}
+
+.home-page .hp-text span:nth-child(2) {
+  z-index: 0;
+}
+
+.home-page .hp-text span:nth-child(3) {
+  z-index: 0;
+}
+
+.home-page .hp-text span {
+  font-family: "Brittany";
+  font-size: 6rem;
+  color: #884224;
+}
+
+.home-page .hp-button {
+  background-color: black;
+  border-radius: 50%;
+  width: 8%;
+  aspect-ratio: 1/1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+}
+
+.home-page .hp-button.open {
+  background-color: white;
+}
+
+/* ----- PORTFOLIO ----- */
+
+.portfolio-page {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: #eee9df;
+}
+
+.portfolio-page.open {
+  display: flex;
+}
+
+[class*="-wall"] {
+  display: contents;
+}
+
+[class*="-wall"] img {
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.pp-direction-arrow {
+  display: contents;
+}
+
+.pp-direction-arrow [class*="ppda-"] {
+  width: 8%;
+  aspect-ratio: 1/1;
+  /* clip-path: inset(0 0 50% 0); */
+  /* background-color: rgba(255, 166, 0, 0.511); */
+  position: absolute;
+  border-radius: 50%;
+  top: 56%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  cursor: pointer;
+}
+
+.pp-direction-arrow [class*="ppda-"]:hover {
+  background-color: rgb(255, 166, 0);
+}
+
+.pp-direction-arrow [class*="ppda-"] svg {
+  position: relative;
+  right: 0%;
+  width: 50%;
+  height: 100%;
+  color: black;
+}
+
+.pp-direction-arrow .ppda-about {
+  right: 0;
+  transform: rotate(180deg);
+}
+
+.pp-direction-arrow .ppda-contact {
+  left: 0;
+  transform: rotate(180deg);
+}
+
+/* ----- CARDS ----- */
+
+.portfolio-page .pp-cards {
+  height: 75%;
+  width: 75%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "c1 c2 c3 c4"
+    "c5 c6 c7 c8";
+  position: relative;
+  margin: 0 2% 0 2%;
+}
+
+.portfolio-page .pp-cards ul {
+  display: contents;
+}
+
+.portfolio-page .pp-cards li {
+  background-color: rgb(255, 255, 255);
+  width: 65%;
+  height: 79%;
+  border-radius: 15px;
+  margin: 14% 5%;
+  position: relative;
+  top: 0%;
+  left: 15%;
+  /* transform: translate(-50%, -50%); */
+  border: solid 3px black;
+  box-shadow: -7px 7px 5px 0 #757171bd;
+  transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.portfolio-page .pp-cards [class*="ppc-frame-"] {
+  display: contents;
+}
+
+.portfolio-page .pp-cards li [class^="ppc-frame-"] [class^="ppcf-inner-"] {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+[class^="ppcf-front-"],
+[class^="ppcf-back-"] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s;
+}
+
+.portfolio-page .pp-cards li [class*="ppcf-f-image-"] {
+  width: 92%;
+  aspect-ratio: 1/1;
+  background-color: rgb(255, 255, 255);
+  position: relative;
+  left: 4%;
+  top: 2%;
+  border-radius: 8px;
+}
+
+.portfolio-page .pp-cards li [class*="ppcf-f-image-"] img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 8px;
+}
+
+/* TITLES */
+
+.portfolio-page .pp-cards li [class*="ppcf-f-text-"] {
+  width: 92%;
+  height: 30%;
+
+  position: relative;
+  top: 4.5%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+
+.portfolio-page .pp-cards li [class*="ppcf-f-text-"] span {
+  display: block;
+  font-family: "Anton";
+  font-size: 1.2em;
+  line-height: 1.3;
+  margin-left: 3%;
+}
+
+/* TITLES SPE */
+
+.portfolio-page .pp-cards .ppc-draw .ppcf-f-text-d span:nth-child(1) {
+  opacity: 0;
+}
+
+.portfolio-page .pp-cards .ppc-model .ppcf-f-text-m span:nth-child(1) {
+  opacity: 0;
+}
+
+.portfolio-page .pp-cards [class*="ppcf-f-dots-"] {
+  width: 35%;
+  height: 6%;
+
+  position: relative;
+  top: -21.8%;
+  left: 55%;
+  display: flex;
+  gap: 5%;
+  justify-content: space-around;
+}
+
+.portfolio-page .pp-cards [class*="ppcf-f-dots-"] span {
+  aspect-ratio: 1/1;
+  height: 100%;
+  background-color: black;
+}
+
+/* ----- BACK ----- */
+
+.portfolio-page .pp-cards [class^="ppcf-back-"] {
+  background: #ffffff;
+  color: rgb(0, 0, 0);
+
+  padding: 1em;
+  transform: rotateY(180deg);
+}
+
+/* TITLES */
+
+.portfolio-page .pp-cards li [class*="ppcf-b-text-"] {
+  width: 92%;
+  height: 30%;
+
+  position: relative;
+  top: 0%;
+  left: 45%;
+  transform: translate(-50%, 0%);
+}
+
+.portfolio-page .pp-cards li [class*="ppcf-b-text-"] span {
+  display: block;
+  font-family: "Anton";
+  font-size: 1.3rem;
+  line-height: 1.3;
+  margin-left: 3%;
+}
+
+/* LINES */
+
+.portfolio-page .pp-cards li [class*="ppcf-b-line-"] {
+  width: 95%;
+  height: 2px;
+  background-color: black;
+  border-radius: 2px;
+}
+
+/* TEXT 2 */
+
+.portfolio-page .pp-cards li [class*="ppcf-b-text2-"] {
+  width: 92%;
+  height: auto;
+  margin-top: 3%;
+  margin-left: 3%;
+}
+
+.portfolio-page .pp-cards li [class*="ppcf-b-text2-"] h1 {
+  font-family: "Anton";
+  font-size: 0.7rem;
+}
+
+/* SPE */
+
+.portfolio-page .pp-cards li .ppcf-b-line-d,
+.portfolio-page .pp-cards li .ppcf-b-line-m,
+.portfolio-page .pp-cards li .ppcf-b-line-p {
+  position: relative;
+  top: -15%;
+}
+
+.portfolio-page .pp-cards li .ppcf-b-text2-d,
+.portfolio-page .pp-cards li .ppcf-b-text2-m,
+.portfolio-page .pp-cards li .ppcf-b-text2-p {
+  position: relative;
+  top: -15%;
+}
+
+/* DISCOVER */
+
+.portfolio-page .pp-cards li [class*="ppcf-b-discover-"] {
+  width: 50%;
+  height: 15%;
+  background-color: rgba(255, 166, 0, 0.511);
+  bottom: 6%;
+  left: 40%;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  cursor: pointer;
+  position: absolute;
+}
+
+.portfolio-page .pp-cards li [class*="ppcf-b-discover-"]:hover {
+  transform: scale(1.1);
+  background-color: rgb(255, 166, 0);
+  box-shadow: -3px 3px 5px 0 #757171bd;
+}
+
+.portfolio-page .pp-cards li [class*="ppcf-b-discover-"]:hover h1 {
+  color: black;
+}
+
+.portfolio-page .pp-cards li [class*="ppcf-b-discover-"] h1 {
+  color: rgb(59, 59, 59);
+  font-family: "Anton";
+  font-size: 0.9rem;
+}
+
+.pp-cards li:hover {
+  transform: rotateY(180deg);
+  box-shadow: 7px 7px 5px 0 #757171bd;
+}
+
+.ppc-back {
+  z-index: 15;
+  width: 100%;
+  height: 100%;
+  background-color: #7571713b;
+  backdrop-filter: blur(10px);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+
+.ppc-back.open {
+  display: flex;
+}
+
+/* CONTENT PAGES */
+
+[class*="ppc-page-"] {
+  z-index: 20;
+  display: none;
+  border: solid 1px black;
+  background-color: #eee9df;
+  position: absolute;
+  width: 85%;
+  height: 80%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+[class*="ppc-page-"].open {
+  display: flex;
+  justify-content: center;
+}
+
+[class*="ppcp-content-"] {
+  height: 300vh;
+  width: 85%;
+  scroll-behavior: smooth;
+  overflow-y: auto;
+  z-index: 20;
+}
+
+[class*="ppcp-return-"] {
+  height: 20%;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  background-color: orange;
+  position: absolute;
+  top: 7%;
+  left: 85%;
+}
+
+/* TITLES */
+
+[class*="ppcpc-title-"] {
+  position: absolute;
+  top: 6%;
+  left: 6%;
+}
+
+[class*="ppcpc-title-"] h1 {
+  font-size: 5rem;
+  color: rgb(59, 59, 59);
+  font-family: "Anton";
+}
+
+body.lock-scroll {
+  overflow: hidden;
+}
+
+/* ----- SCHOOL PROJECT ----- */
+
+.ppc-s-project {
+  grid-area: c1;
+  display: contents;
+}
+
+/* DOTS */
+
+.portfolio-page .pp-cards .ppcf-f-dots-s span:nth-child(1) {
+  background-color: rgb(194, 190, 190);
+}
+.portfolio-page .pp-cards .ppcf-f-dots-s span:nth-child(2) {
+  background-color: rgb(63, 60, 60);
+}
+.portfolio-page .pp-cards .ppcf-f-dots-s span:nth-child(3) {
+  background-color: rgb(243, 120, 59);
+}
+
+/* ----- DRAW ----- */
+
+.ppc-draw {
+  grid-area: c2;
+  display: contents;
+}
+
+/* DOTS */
+
+.portfolio-page .pp-cards .ppcf-f-dots-d span:nth-child(1) {
+  background-color: rgb(176, 176, 176);
+}
+.portfolio-page .pp-cards .ppcf-f-dots-d span:nth-child(2) {
+  background-color: rgb(63, 60, 60);
+}
+.portfolio-page .pp-cards .ppcf-f-dots-d span:nth-child(3) {
+  background-color: rgb(112, 111, 111);
+}
+
+/* ----- C OBJECT ----- */
+
+.ppc-object-c {
+  grid-area: c3;
+  display: contents;
+}
+
+/* DOTS */
+
+.portfolio-page .pp-cards .ppcf-f-dots-o span:nth-child(1) {
+  background-color: rgb(194, 190, 190);
+}
+.portfolio-page .pp-cards .ppcf-f-dots-o span:nth-child(2) {
+  background-color: rgb(63, 60, 60);
+}
+.portfolio-page .pp-cards .ppcf-f-dots-o span:nth-child(3) {
+  background-color: rgb(243, 120, 59);
+}
+
+/* ----- MODEL ----- */
+
+.ppc-model {
+  grid-area: c4;
+  display: contents;
+}
+
+/* DOTS */
+
+.portfolio-page .pp-cards .ppcf-f-dots-m span:nth-child(1) {
+  background-color: rgb(77, 68, 61);
+}
+.portfolio-page .pp-cards .ppcf-f-dots-m span:nth-child(2) {
+  background-color: rgb(92, 118, 92);
+}
+.portfolio-page .pp-cards .ppcf-f-dots-m span:nth-child(3) {
+  background-color: rgb(214, 197, 141);
+}
+
+/* ----- C 3D ----- */
+
+.ppc-3d-c {
+  grid-area: c5;
+  display: contents;
+}
+
+/* DOTS */
+
+.portfolio-page .pp-cards .ppcf-f-dots-3 span:nth-child(1) {
+  background-color: rgb(181, 181, 179);
+}
+.portfolio-page .pp-cards .ppcf-f-dots-3 span:nth-child(2) {
+  background-color: rgb(227, 183, 88);
+}
+.portfolio-page .pp-cards .ppcf-f-dots-3 span:nth-child(3) {
+  background-color: rgb(175, 207, 137);
+}
+
+/* ----- PHOTO ----- */
+
+.ppc-photo {
+  grid-area: c6;
+  display: contents;
+}
+
+/* DOTS */
+
+.portfolio-page .pp-cards .ppcf-f-dots-p span:nth-child(1) {
+  background-color: rgb(238, 198, 157);
+}
+.portfolio-page .pp-cards .ppcf-f-dots-p span:nth-child(2) {
+  background-color: rgb(114, 35, 35);
+}
+.portfolio-page .pp-cards .ppcf-f-dots-p span:nth-child(3) {
+  background-color: rgb(148, 203, 218);
+}
+
+/* ----- FURNITURE ----- */
+
+.ppc-furniture-c {
+  grid-area: c7;
+  display: contents;
+}
+
+/* DOTS */
+
+.portfolio-page .pp-cards .ppcf-f-dots-f span:nth-child(1) {
+  background-color: rgb(194, 190, 190);
+}
+.portfolio-page .pp-cards .ppcf-f-dots-f span:nth-child(2) {
+  background-color: rgb(63, 60, 60);
+}
+.portfolio-page .pp-cards .ppcf-f-dots-f span:nth-child(3) {
+  background-color: rgb(243, 120, 59);
+}
+
+/* ----- PROGRAMMATION ----- */
+
+.ppc-programmation {
+  grid-area: c8;
+  display: contents;
+}
+
+/* DOTS */
+
+.portfolio-page .pp-cards .ppcf-f-dots-pr span:nth-child(1) {
+  background-color: rgb(105, 206, 100);
+}
+.portfolio-page .pp-cards .ppcf-f-dots-pr span:nth-child(2) {
+  background-color: rgb(182, 59, 59);
+}
+.portfolio-page .pp-cards .ppcf-f-dots-pr span:nth-child(3) {
+  background-color: rgb(214, 161, 62);
+}
+
+/* ----- CONTACT ----- */
+
+.contact-page {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: none;
+  background-color: #eee9df;
+}
+
+.contact-page.open {
+  display: flex;
+}
+
+.pp-direction-arrow {
+  display: contents;
+}
+
+.pp-direction-arrow .ppda-portfolio-c {
+  right: 0;
+  transform: rotate(0deg);
+}
+
+/* CONTENT */
+
+.cp-content {
+  display: contents;
+}
+
+.contact-page .cp-content .cpc-title {
+  position: absolute;
+  top: 15%;
+  right: 16%;
+}
+
+.contact-page .cp-content .cpc-title span {
+  font-size: 6rem;
+  color: rgb(59, 59, 59);
+  font-family: "Anton";
+}
+
+/* ----- ABOUT ----- */
+
+.about-page {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: none;
+  background-color: #eee9df;
+}
+
+.about-page.open {
+  display: flex;
+}
+
+.pp-direction-arrow .ppda-portfolio-a {
+  left: 0;
+  transform: rotate(180deg);
+}
+
+/* CONTENT */
+
+.ap-content {
+  display: contents;
+}
+
+.about-page .ap-content .apc-title {
+  position: absolute;
+  top: 15%;
+  left: 16%;
+}
+
+.about-page .ap-content .apc-title h1 {
+  font-size: 6rem;
+  color: rgb(59, 59, 59);
+  font-family: "Anton";
+  /* text-shadow: #757171bd 7px 7px 2px; */
+}
+
+.about-page .ap-content img {
+  height: 80%;
+  aspect-ratio: 16/16;
+  position: absolute;
+  bottom: -6%;
+  right: -2%;
+}
