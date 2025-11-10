@@ -725,18 +725,148 @@ body.lock-scroll {
 /* CONTENT */
 
 .cp-content {
-  display: contents;
+  display: grid;
+  height: 78%;
+  width: 77.5%;
+  position: absolute;
+  top: 11%;
+  right: 11.25%;
+  grid-template-columns: 60% 40%;
+  grid-template-rows: 30% 70%;
+  grid-template-areas:
+    "ti ti"
+    "sa ia";
 }
 
 .contact-page .cp-content .cpc-title {
   position: absolute;
-  top: 15%;
-  right: 16%;
+  display: flex;
+  top: 7%;
+  right: 6%;
+  grid-area: ti;
+  justify-content: center;
+  align-items: center;
 }
 
 .contact-page .cp-content .cpc-title span {
-  font-size: 6rem;
+  width: 100%;
+  height: 100%;
   color: rgb(59, 59, 59);
+  font-family: "Anton";
+  text-align: center;
+  display: block;
+  font-size: 7vw;
+}
+
+.cpc-send-area {
+  position: relative;
+  top: 0;
+  right: 0;
+  transform: translate(50%);
+  height: 75%;
+  width: 60%;
+  grid-area: sa;
+  /* border: red 2px solid; */
+  display: grid;
+  grid-template-rows: 20% 60% 20%;
+  grid-template-areas:
+    "ma"
+    "tx"
+    "bu";
+}
+
+.cpc-sa-mail textarea {
+  height: 80%;
+  width: 90%;
+  background-color: #eee9df;
+  border-radius: 20px;
+  padding-left: 6%;
+  padding-top: 4%;
+  resize: none;
+  border: none;
+  transition: 0.5s;
+  color: rgb(59, 59, 59);
+  font-family: "Anton";
+  overflow: hidden;
+}
+
+.cpc-sa-mail textarea:focus {
+  outline: none;
+  box-shadow: -3px 3px 2px 0px rgba(0, 0, 0, 0.5) inset,
+    -3px 3px 2px 0px rgba(255, 255, 255, 0.5);
+}
+
+.cpc-sa-mail textarea:hover {
+  box-shadow: -3px 3px 2px 0px rgba(0, 0, 0, 0.5) inset,
+    -3px 3px 2px 0px rgba(255, 255, 255, 0.5);
+}
+
+.cpc-sa-text textarea {
+  height: 80%;
+  width: 90%;
+  background-color: #eee9df;
+  border-radius: 20px;
+  padding: 6%;
+  resize: none;
+  border: none;
+  transition: 0.5s;
+  color: rgb(59, 59, 59);
+  font-family: "Anton";
+}
+
+.cpc-sa-text textarea:focus {
+  outline: none;
+  box-shadow: -3px 3px 2px 0px rgba(0, 0, 0, 0.5) inset,
+    -3px 3px 2px 0px rgba(255, 255, 255, 0.5);
+}
+
+.cpc-sa-text textarea:hover {
+  box-shadow: -3px 3px 2px 0px rgba(0, 0, 0, 0.5) inset,
+    -3px 3px 2px 0px rgba(255, 255, 255, 0.5);
+}
+
+/* survol ou focus du textarea mail */
+.cpc-send-area:has(.cpc-sa-mail textarea:hover) .cpc-sa-ligne-m,
+.cpc-send-area:has(.cpc-sa-mail textarea:focus) .cpc-sa-ligne-m {
+  opacity: 0;
+}
+
+/* survol ou focus du textarea message */
+.cpc-send-area:has(.cpc-sa-text textarea:hover) .cpc-sa-ligne-t,
+.cpc-send-area:has(.cpc-sa-text textarea:focus) .cpc-sa-ligne-t {
+  opacity: 0;
+}
+
+[class*="cpc-sa-ligne-"] {
+  position: absolute;
+  width: 80%;
+  height: 0.7%;
+  border-radius: 1px;
+  background-color: rgb(105, 104, 104);
+  left: 5%;
+}
+
+.cpc-sa-ligne-m {
+  top: 16%;
+  transition: 0.3s;
+}
+
+.cpc-sa-ligne-t {
+  top: 68%;
+  transition: 0.3s;
+}
+
+.cpc-sa-send-button button {
+  height: 70%;
+  width: 25%;
+  background-color: rgb(72, 71, 71);
+  border-radius: 20px;
+  left: 60%;
+  position: relative;
+  resize: none;
+  border: none;
+  transition: 0.5s;
+  color: rgb(224, 223, 223);
   font-family: "Anton";
 }
 
@@ -769,13 +899,19 @@ body.lock-scroll {
   position: absolute;
   top: 15%;
   left: 16%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
-.about-page .ap-content .apc-title h1 {
-  font-size: 6rem;
+.about-page .ap-content .apc-title span {
+  width: 100%;
+  height: 100%;
   color: rgb(59, 59, 59);
   font-family: "Anton";
-  /* text-shadow: #757171bd 7px 7px 2px; */
+  text-align: center;
+  display: block;
+  font-size: 7vw;
 }
 
 .about-page .ap-content img {
