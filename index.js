@@ -38,6 +38,8 @@ ArrowPortfolioA.onclick = function () {
   AboutPage.classList.remove("open");
 };
 
+// PAGE SYSTEM
+
 document.addEventListener("DOMContentLoaded", () => {
   const discoverButtons = document.querySelectorAll(
     '[class*="ppcf-b-discover-"]'
@@ -104,4 +106,69 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll('[class*="ppcp-return-"]').forEach((ret) => {
     ret.addEventListener("click", closePages);
   });
+});
+
+// UP SYSTEM
+
+const boutonsUp = document.querySelectorAll(".ppcp-up");
+
+const cards = [
+  ".ppc-page-s",
+  ".ppc-page-d",
+  ".ppc-page-o",
+  ".ppc-page-m",
+  ".ppc-page-3",
+  ".ppc-page-p",
+  ".ppc-page-f",
+  ".ppc-page-pr",
+];
+
+boutonsUp.forEach((btn, index) => {
+  btn.addEventListener("click", () => {
+    const card = document.querySelector(cards[index]);
+    if (!card) return;
+
+    if (card.scrollHeight > card.clientHeight) {
+      card.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    } else {
+      const topPosition = card.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: topPosition,
+        behavior: "smooth",
+      });
+    }
+  });
+});
+// CONTACT SYSTEM
+
+document.getElementById("send-btn").addEventListener("click", function (e) {
+  e.preventDefault();
+
+  // Récupération des valeurs
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("mail").value.trim();
+  const message = document.getElementById("message").value.trim();
+
+  if (!name || !email || !message) {
+    alert("Merci de remplir tous les champs avant d’envoyer.");
+    return;
+  }
+
+  // Adresse où tu veux recevoir les messages
+  const destinataire = "robin.courte@mail.com"; // <-- remplace par ton adresse !
+
+  // Sujet et contenu du mail
+  const subject = `Message de ${name}`;
+  const body = `Nom / Entreprise : ${name}\nEmail : ${email}\n\nMessage :\n${message}`;
+
+  // Création du lien mailto
+  const mailtoLink = `mailto:${destinataire}?subject=${encodeURIComponent(
+    subject
+  )}&body=${encodeURIComponent(body)}`;
+
+  // Ouvre le client mail
+  window.location.href = mailtoLink;
 });
